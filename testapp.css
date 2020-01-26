@@ -1,0 +1,41 @@
+.tableofproducts {
+	margin-top: 20px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.Search {
+	width: 50%;
+}
+
+.viewQuan {
+	
+	padding: 3px 10px;
+	border-radius: 50px;
+	width: auto;
+    display: inline-block;
+    background-color: #28a745;
+    color: #fff;
+    text-align: center;
+}
+.viewInTable {
+	display: flex;
+	 justify-content: space-between;
+}
+
+.forFields h2 {
+	font-size: inherit;
+}
+
+.inputInfo {
+	width: inherit;
+}
+
+.inputInfo1 {
+	width: inherit;
+	margin-top: 25px;
+}
+
+.kekClass {
+	margin-left: 80%;
+}
