@@ -18,8 +18,8 @@ class Renderer {
             <td class="viewInTable name">${name}<span class="viewQuan">  ${quantity}  </span></td>
             <td>${Renderer.toDollars(price)}</td>
             <td>
-                <button id="addnewproduct" type="button" class="btn btn-success" onclick="app.onEditclick(${index})">Edit</button>
-                <button id="deletewproduct" type="button" class="btn btn-success" onclick="app.onDeleteclick(${index})">Delete</button>
+                <button id="addnewproduct" type="button" class="btn btn-success" onclick="app.onEditСlick(${index})">Edit</button>
+                <button id="deletewproduct" type="button" class="btn btn-success" onclick="app.onDeleteСlick(${index})">Delete</button>
             </td>`;
 
     }
@@ -31,7 +31,7 @@ class Renderer {
             <td><input id="newPrice" value=${price}></td>
             <td>
                 <button id="addnewproduct" type="button" class="btn btn-success" onclick="app.onUpdate(${index})">Save</button>
-                <button id="deletewproduct" type="button" class="btn btn-success" onclick="app.onDeleteclick(${index})">Delete</button>
+                <button id="deletewproduct" type="button" class="btn btn-success" onclick="app.onDeleteСlick(${index})">Delete</button>
             </td>`;
         return tr;
     }
@@ -204,21 +204,19 @@ class App {
               price = document.getElementById('inputPrice').value,
               quantity = document.getElementById('inputCount').value;
 
-              document.get
-
         this.store.addItem({
             name,
             price,
             quantity,
         });
         this.clearFields();
+        Renderer.changeBtnOnAdd();
 
     }
 
-    onDeleteclick (index){
+    onDeleteСlick (index){
        if (confirm("Are you sure?")) {
            return this.store.removeItem(index);
-
        }
     }
     clearFields (){
@@ -226,7 +224,7 @@ class App {
         document.getElementById("inputPrice").value = "";
         document.getElementById("inputCount").value = "";
     }
-    onEditclick (index){
+    onEditСlick (index){
         const name = this.store.getItemByIdx(index).name,
             price = this.store.getItemByIdx(index).price,
             quantity = this.store.getItemByIdx(index).quantity;
@@ -235,7 +233,6 @@ class App {
         Renderer.replaceRow(name, price, quantity, index);
         Renderer.replaceRowNew(name, price, quantity, index);
     }
-    debugger;
     onUpdate (index){
 
 
@@ -252,11 +249,7 @@ class App {
 
     onSortName (){
         let arrow = document.getElementById('nameproduct').classList;
-        if (arrow.contains('fa-sort')){
-            this.store.sortingEngineNames(1,-1);
-            return arrow = arrow.replace('fa-sort', 'fa-sort-down');
 
-        }
         if (arrow.contains('fa-sort-down')){
             this.store.sortingEngineNames(-1,1);
             return arrow = arrow.replace('fa-sort-down', 'fa-sort-up')
@@ -268,14 +261,10 @@ class App {
             this.store.sortingEngineNames(1,-1);
 
         }
+
     }
     onSortPrice (){
         let arrow = document.getElementById('priceproduct').classList;
-        if (arrow.contains('fa-sort')){
-            this.store.sortingEnginePrice(1,-1);
-            return arrow = arrow.replace('fa-sort', 'fa-sort-down');
-
-        }
         if (arrow.contains('fa-sort-down')){
             this.store.sortingEnginePrice(-1,1);
             return arrow = arrow.replace('fa-sort-down', 'fa-sort-up')
